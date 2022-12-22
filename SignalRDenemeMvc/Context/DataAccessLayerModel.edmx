@@ -1,0 +1,667 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DiyetisyenDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Besinlers">
+          <Key>
+            <PropertyRef Name="BesinID" />
+          </Key>
+          <Property Name="BesinID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Yemek" Type="nvarchar(max)" />
+          <Property Name="Miktar" Type="nvarchar(max)" />
+          <Property Name="OlcuBirimi" Type="nvarchar(max)" />
+          <Property Name="Kalori" Type="nvarchar(max)" />
+          <Property Name="Protein" Type="nvarchar(max)" />
+          <Property Name="Karbonhidrat" Type="nvarchar(max)" />
+          <Property Name="Yağ" Type="nvarchar(max)" />
+          <Property Name="CategoriesID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="CategoriesID" />
+          </Key>
+          <Property Name="CategoriesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoriesName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Danisans">
+          <Key>
+            <PropertyRef Name="DanisanID" />
+          </Key>
+          <Property Name="DanisanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdiSoyadi" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="TlfNo" Type="nvarchar(max)" />
+          <Property Name="Cinsiyet" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="DogumTarihi" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="DiyetBaslamatarihi" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="EgitimDurumu" Type="nvarchar(max)" />
+          <Property Name="Boy" Type="real" Nullable="false" />
+          <Property Name="Kilo" Type="real" Nullable="false" />
+          <Property Name="Yas" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="danisanTahlilDosyas">
+          <Key>
+            <PropertyRef Name="DanisanTahlilDosyaID" />
+          </Key>
+          <Property Name="DanisanTahlilDosyaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DanisanDosyaTuru" Type="nvarchar(max)" />
+          <Property Name="YuklenmeTarihi" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="DosyaAdi" Type="nvarchar(max)" />
+          <Property Name="DanisanID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Denemes">
+          <Key>
+            <PropertyRef Name="DenemeID" />
+          </Key>
+          <Property Name="DenemeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DenemeAdi" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DiyetSablons">
+          <Key>
+            <PropertyRef Name="DiyetSablonID" />
+          </Key>
+          <Property Name="DiyetSablonID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Baslik" Type="nvarchar(max)" />
+          <Property Name="Aciklama" Type="nvarchar(max)" />
+          <Property Name="OlusturmaTarihi" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="ToplamKalori" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gorusmelers">
+          <Key>
+            <PropertyRef Name="GorusmeID" />
+          </Key>
+          <Property Name="GorusmeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Alerji" Type="nvarchar(max)" />
+          <Property Name="GenetikHastalik" Type="nvarchar(max)" />
+          <Property Name="AiledeHastalik" Type="nvarchar(max)" />
+          <Property Name="Aktivite" Type="nvarchar(max)" />
+          <Property Name="Aciklama" Type="nvarchar(max)" />
+          <Property Name="Kullanilanilac" Type="nvarchar(max)" />
+          <Property Name="GorusmeTarihi" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="DanisanID" Type="int" Nullable="false" />
+          <Property Name="GuncelKilo" Type="real" Nullable="false" />
+          <Property Name="BacakCM" Type="int" Nullable="false" />
+          <Property Name="BasenCM" Type="int" Nullable="false" />
+          <Property Name="BelCM" Type="int" Nullable="false" />
+          <Property Name="GogusCM" Type="int" Nullable="false" />
+          <Property Name="KalcaCM" Type="int" Nullable="false" />
+          <Property Name="KolCM" Type="int" Nullable="false" />
+          <Property Name="YagOranı" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OgunIcerikleris">
+          <Key>
+            <PropertyRef Name="OgunIcerikID" />
+          </Key>
+          <Property Name="OgunIcerikID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Miktar" Type="nvarchar(max)" />
+          <Property Name="Olcubirimi" Type="nvarchar(max)" />
+          <Property Name="Kalori" Type="nvarchar(max)" />
+          <Property Name="Protein" Type="nvarchar(max)" />
+          <Property Name="Karbonhidrat" Type="nvarchar(max)" />
+          <Property Name="Yağ" Type="nvarchar(max)" />
+          <Property Name="OgunID" Type="int" Nullable="false" />
+          <Property Name="DiyetSablonID" Type="int" Nullable="false" />
+          <Property Name="BesinID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ogunlers">
+          <Key>
+            <PropertyRef Name="OgunID" />
+          </Key>
+          <Property Name="OgunID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OgunAdi" Type="nvarchar(max)" />
+          <Property Name="DiyetSablonID" Type="int" />
+          <Property Name="BesinlerBesinID" Type="int" />
+        </EntityType>
+        <Association Name="FK_Besinlers_Categories_CategoriesID">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Besinlers" Type="Self.Besinlers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoriesID" />
+            </Principal>
+            <Dependent Role="Besinlers">
+              <PropertyRef Name="CategoriesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_danisanTahlilDosyas_Danisans_DanisanID">
+          <End Role="Danisans" Type="Self.Danisans" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="danisanTahlilDosyas" Type="Self.danisanTahlilDosyas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Danisans">
+              <PropertyRef Name="DanisanID" />
+            </Principal>
+            <Dependent Role="danisanTahlilDosyas">
+              <PropertyRef Name="DanisanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gorusmelers_Danisans_DanisanID">
+          <End Role="Danisans" Type="Self.Danisans" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Gorusmelers" Type="Self.Gorusmelers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Danisans">
+              <PropertyRef Name="DanisanID" />
+            </Principal>
+            <Dependent Role="Gorusmelers">
+              <PropertyRef Name="DanisanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OgunIcerikleris_DiyetSablons_DiyetSablonID">
+          <End Role="DiyetSablons" Type="Self.DiyetSablons" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OgunIcerikleris" Type="Self.OgunIcerikleris" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiyetSablons">
+              <PropertyRef Name="DiyetSablonID" />
+            </Principal>
+            <Dependent Role="OgunIcerikleris">
+              <PropertyRef Name="DiyetSablonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OgunIcerikleris_Ogunlers_OgunID">
+          <End Role="Ogunlers" Type="Self.Ogunlers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OgunIcerikleris" Type="Self.OgunIcerikleris" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ogunlers">
+              <PropertyRef Name="OgunID" />
+            </Principal>
+            <Dependent Role="OgunIcerikleris">
+              <PropertyRef Name="OgunID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ogunlers_Besinlers_BesinlerBesinID">
+          <End Role="Besinlers" Type="Self.Besinlers" Multiplicity="0..1" />
+          <End Role="Ogunlers" Type="Self.Ogunlers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Besinlers">
+              <PropertyRef Name="BesinID" />
+            </Principal>
+            <Dependent Role="Ogunlers">
+              <PropertyRef Name="BesinlerBesinID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ogunlers_DiyetSablons_DiyetSablonID">
+          <End Role="DiyetSablons" Type="Self.DiyetSablons" Multiplicity="0..1" />
+          <End Role="Ogunlers" Type="Self.Ogunlers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiyetSablons">
+              <PropertyRef Name="DiyetSablonID" />
+            </Principal>
+            <Dependent Role="Ogunlers">
+              <PropertyRef Name="DiyetSablonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DiyetisyenDBModelStoreContainer">
+          <EntitySet Name="Besinlers" EntityType="Self.Besinlers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Danisans" EntityType="Self.Danisans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="danisanTahlilDosyas" EntityType="Self.danisanTahlilDosyas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Denemes" EntityType="Self.Denemes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DiyetSablons" EntityType="Self.DiyetSablons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gorusmelers" EntityType="Self.Gorusmelers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OgunIcerikleris" EntityType="Self.OgunIcerikleris" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ogunlers" EntityType="Self.Ogunlers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Besinlers_Categories_CategoriesID" Association="Self.FK_Besinlers_Categories_CategoriesID">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Besinlers" EntitySet="Besinlers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_danisanTahlilDosyas_Danisans_DanisanID" Association="Self.FK_danisanTahlilDosyas_Danisans_DanisanID">
+            <End Role="Danisans" EntitySet="Danisans" />
+            <End Role="danisanTahlilDosyas" EntitySet="danisanTahlilDosyas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gorusmelers_Danisans_DanisanID" Association="Self.FK_Gorusmelers_Danisans_DanisanID">
+            <End Role="Danisans" EntitySet="Danisans" />
+            <End Role="Gorusmelers" EntitySet="Gorusmelers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OgunIcerikleris_DiyetSablons_DiyetSablonID" Association="Self.FK_OgunIcerikleris_DiyetSablons_DiyetSablonID">
+            <End Role="DiyetSablons" EntitySet="DiyetSablons" />
+            <End Role="OgunIcerikleris" EntitySet="OgunIcerikleris" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OgunIcerikleris_Ogunlers_OgunID" Association="Self.FK_OgunIcerikleris_Ogunlers_OgunID">
+            <End Role="Ogunlers" EntitySet="Ogunlers" />
+            <End Role="OgunIcerikleris" EntitySet="OgunIcerikleris" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ogunlers_Besinlers_BesinlerBesinID" Association="Self.FK_Ogunlers_Besinlers_BesinlerBesinID">
+            <End Role="Besinlers" EntitySet="Besinlers" />
+            <End Role="Ogunlers" EntitySet="Ogunlers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ogunlers_DiyetSablons_DiyetSablonID" Association="Self.FK_Ogunlers_DiyetSablons_DiyetSablonID">
+            <End Role="DiyetSablons" EntitySet="DiyetSablons" />
+            <End Role="Ogunlers" EntitySet="Ogunlers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DiyetisyenDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Besinlers">
+          <Key>
+            <PropertyRef Name="BesinID" />
+          </Key>
+          <Property Name="BesinID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Yemek" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Miktar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OlcuBirimi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Kalori" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Protein" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Karbonhidrat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Yağ" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CategoriesID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Categories" Relationship="Self.FK_Besinlers_Categories_CategoriesID" FromRole="Besinlers" ToRole="Categories" />
+          <NavigationProperty Name="Ogunlers" Relationship="Self.FK_Ogunlers_Besinlers_BesinlerBesinID" FromRole="Besinlers" ToRole="Ogunlers" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="CategoriesID" />
+          </Key>
+          <Property Name="CategoriesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoriesName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Besinlers" Relationship="Self.FK_Besinlers_Categories_CategoriesID" FromRole="Categories" ToRole="Besinlers" />
+        </EntityType>
+        <EntityType Name="Danisans">
+          <Key>
+            <PropertyRef Name="DanisanID" />
+          </Key>
+          <Property Name="DanisanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdiSoyadi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TlfNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Cinsiyet" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DogumTarihi" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DiyetBaslamatarihi" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="EgitimDurumu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Boy" Type="Single" Nullable="false" />
+          <Property Name="Kilo" Type="Single" Nullable="false" />
+          <Property Name="Yas" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="danisanTahlilDosyas" Relationship="Self.FK_danisanTahlilDosyas_Danisans_DanisanID" FromRole="Danisans" ToRole="danisanTahlilDosyas" />
+          <NavigationProperty Name="Gorusmelers" Relationship="Self.FK_Gorusmelers_Danisans_DanisanID" FromRole="Danisans" ToRole="Gorusmelers" />
+        </EntityType>
+        <EntityType Name="danisanTahlilDosyas">
+          <Key>
+            <PropertyRef Name="DanisanTahlilDosyaID" />
+          </Key>
+          <Property Name="DanisanTahlilDosyaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DanisanDosyaTuru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="YuklenmeTarihi" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="DosyaAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DanisanID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Danisans" Relationship="Self.FK_danisanTahlilDosyas_Danisans_DanisanID" FromRole="danisanTahlilDosyas" ToRole="Danisans" />
+        </EntityType>
+        <EntityType Name="Denemes">
+          <Key>
+            <PropertyRef Name="DenemeID" />
+          </Key>
+          <Property Name="DenemeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DenemeAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DiyetSablons">
+          <Key>
+            <PropertyRef Name="DiyetSablonID" />
+          </Key>
+          <Property Name="DiyetSablonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Baslik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OlusturmaTarihi" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="ToplamKalori" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <NavigationProperty Name="OgunIcerikleris" Relationship="Self.FK_OgunIcerikleris_DiyetSablons_DiyetSablonID" FromRole="DiyetSablons" ToRole="OgunIcerikleris" />
+          <NavigationProperty Name="Ogunlers" Relationship="Self.FK_Ogunlers_DiyetSablons_DiyetSablonID" FromRole="DiyetSablons" ToRole="Ogunlers" />
+        </EntityType>
+        <EntityType Name="Gorusmelers">
+          <Key>
+            <PropertyRef Name="GorusmeID" />
+          </Key>
+          <Property Name="GorusmeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Alerji" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GenetikHastalik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AiledeHastalik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Aktivite" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Kullanilanilac" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GorusmeTarihi" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="DanisanID" Type="Int32" Nullable="false" />
+          <Property Name="GuncelKilo" Type="Single" Nullable="false" />
+          <Property Name="BacakCM" Type="Int32" Nullable="false" />
+          <Property Name="BasenCM" Type="Int32" Nullable="false" />
+          <Property Name="BelCM" Type="Int32" Nullable="false" />
+          <Property Name="GogusCM" Type="Int32" Nullable="false" />
+          <Property Name="KalcaCM" Type="Int32" Nullable="false" />
+          <Property Name="KolCM" Type="Int32" Nullable="false" />
+          <Property Name="YagOranı" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Danisans" Relationship="Self.FK_Gorusmelers_Danisans_DanisanID" FromRole="Gorusmelers" ToRole="Danisans" />
+        </EntityType>
+        <EntityType Name="OgunIcerikleris">
+          <Key>
+            <PropertyRef Name="OgunIcerikID" />
+          </Key>
+          <Property Name="OgunIcerikID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Miktar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Olcubirimi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Kalori" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Protein" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Karbonhidrat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Yağ" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OgunID" Type="Int32" Nullable="false" />
+          <Property Name="DiyetSablonID" Type="Int32" Nullable="false" />
+          <Property Name="BesinID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DiyetSablons" Relationship="Self.FK_OgunIcerikleris_DiyetSablons_DiyetSablonID" FromRole="OgunIcerikleris" ToRole="DiyetSablons" />
+          <NavigationProperty Name="Ogunlers" Relationship="Self.FK_OgunIcerikleris_Ogunlers_OgunID" FromRole="OgunIcerikleris" ToRole="Ogunlers" />
+        </EntityType>
+        <EntityType Name="Ogunlers">
+          <Key>
+            <PropertyRef Name="OgunID" />
+          </Key>
+          <Property Name="OgunID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OgunAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DiyetSablonID" Type="Int32" />
+          <Property Name="BesinlerBesinID" Type="Int32" />
+          <NavigationProperty Name="Besinlers" Relationship="Self.FK_Ogunlers_Besinlers_BesinlerBesinID" FromRole="Ogunlers" ToRole="Besinlers" />
+          <NavigationProperty Name="DiyetSablons" Relationship="Self.FK_Ogunlers_DiyetSablons_DiyetSablonID" FromRole="Ogunlers" ToRole="DiyetSablons" />
+          <NavigationProperty Name="OgunIcerikleris" Relationship="Self.FK_OgunIcerikleris_Ogunlers_OgunID" FromRole="Ogunlers" ToRole="OgunIcerikleris" />
+        </EntityType>
+        <Association Name="FK_Besinlers_Categories_CategoriesID">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Besinlers" Type="Self.Besinlers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoriesID" />
+            </Principal>
+            <Dependent Role="Besinlers">
+              <PropertyRef Name="CategoriesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ogunlers_Besinlers_BesinlerBesinID">
+          <End Role="Besinlers" Type="Self.Besinlers" Multiplicity="0..1" />
+          <End Role="Ogunlers" Type="Self.Ogunlers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Besinlers">
+              <PropertyRef Name="BesinID" />
+            </Principal>
+            <Dependent Role="Ogunlers">
+              <PropertyRef Name="BesinlerBesinID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_danisanTahlilDosyas_Danisans_DanisanID">
+          <End Role="Danisans" Type="Self.Danisans" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="danisanTahlilDosyas" Type="Self.danisanTahlilDosyas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Danisans">
+              <PropertyRef Name="DanisanID" />
+            </Principal>
+            <Dependent Role="danisanTahlilDosyas">
+              <PropertyRef Name="DanisanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gorusmelers_Danisans_DanisanID">
+          <End Role="Danisans" Type="Self.Danisans" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Gorusmelers" Type="Self.Gorusmelers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Danisans">
+              <PropertyRef Name="DanisanID" />
+            </Principal>
+            <Dependent Role="Gorusmelers">
+              <PropertyRef Name="DanisanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OgunIcerikleris_DiyetSablons_DiyetSablonID">
+          <End Role="DiyetSablons" Type="Self.DiyetSablons" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OgunIcerikleris" Type="Self.OgunIcerikleris" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiyetSablons">
+              <PropertyRef Name="DiyetSablonID" />
+            </Principal>
+            <Dependent Role="OgunIcerikleris">
+              <PropertyRef Name="DiyetSablonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ogunlers_DiyetSablons_DiyetSablonID">
+          <End Role="DiyetSablons" Type="Self.DiyetSablons" Multiplicity="0..1" />
+          <End Role="Ogunlers" Type="Self.Ogunlers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiyetSablons">
+              <PropertyRef Name="DiyetSablonID" />
+            </Principal>
+            <Dependent Role="Ogunlers">
+              <PropertyRef Name="DiyetSablonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OgunIcerikleris_Ogunlers_OgunID">
+          <End Role="Ogunlers" Type="Self.Ogunlers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OgunIcerikleris" Type="Self.OgunIcerikleris" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ogunlers">
+              <PropertyRef Name="OgunID" />
+            </Principal>
+            <Dependent Role="OgunIcerikleris">
+              <PropertyRef Name="OgunID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DiyetisyenDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Besinlers" EntityType="Self.Besinlers" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" />
+          <EntitySet Name="Danisans" EntityType="Self.Danisans" />
+          <EntitySet Name="danisanTahlilDosyas" EntityType="Self.danisanTahlilDosyas" />
+          <EntitySet Name="Denemes" EntityType="Self.Denemes" />
+          <EntitySet Name="DiyetSablons" EntityType="Self.DiyetSablons" />
+          <EntitySet Name="Gorusmelers" EntityType="Self.Gorusmelers" />
+          <EntitySet Name="OgunIcerikleris" EntityType="Self.OgunIcerikleris" />
+          <EntitySet Name="Ogunlers" EntityType="Self.Ogunlers" />
+          <AssociationSet Name="FK_Besinlers_Categories_CategoriesID" Association="Self.FK_Besinlers_Categories_CategoriesID">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Besinlers" EntitySet="Besinlers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ogunlers_Besinlers_BesinlerBesinID" Association="Self.FK_Ogunlers_Besinlers_BesinlerBesinID">
+            <End Role="Besinlers" EntitySet="Besinlers" />
+            <End Role="Ogunlers" EntitySet="Ogunlers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_danisanTahlilDosyas_Danisans_DanisanID" Association="Self.FK_danisanTahlilDosyas_Danisans_DanisanID">
+            <End Role="Danisans" EntitySet="Danisans" />
+            <End Role="danisanTahlilDosyas" EntitySet="danisanTahlilDosyas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gorusmelers_Danisans_DanisanID" Association="Self.FK_Gorusmelers_Danisans_DanisanID">
+            <End Role="Danisans" EntitySet="Danisans" />
+            <End Role="Gorusmelers" EntitySet="Gorusmelers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OgunIcerikleris_DiyetSablons_DiyetSablonID" Association="Self.FK_OgunIcerikleris_DiyetSablons_DiyetSablonID">
+            <End Role="DiyetSablons" EntitySet="DiyetSablons" />
+            <End Role="OgunIcerikleris" EntitySet="OgunIcerikleris" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ogunlers_DiyetSablons_DiyetSablonID" Association="Self.FK_Ogunlers_DiyetSablons_DiyetSablonID">
+            <End Role="DiyetSablons" EntitySet="DiyetSablons" />
+            <End Role="Ogunlers" EntitySet="Ogunlers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OgunIcerikleris_Ogunlers_OgunID" Association="Self.FK_OgunIcerikleris_Ogunlers_OgunID">
+            <End Role="Ogunlers" EntitySet="Ogunlers" />
+            <End Role="OgunIcerikleris" EntitySet="OgunIcerikleris" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DiyetisyenDBModelStoreContainer" CdmEntityContainer="DiyetisyenDBEntities">
+          <EntitySetMapping Name="Besinlers">
+            <EntityTypeMapping TypeName="DiyetisyenDBModel.Besinlers">
+              <MappingFragment StoreEntitySet="Besinlers">
+                <ScalarProperty Name="BesinID" ColumnName="BesinID" />
+                <ScalarProperty Name="Yemek" ColumnName="Yemek" />
+                <ScalarProperty Name="Miktar" ColumnName="Miktar" />
+                <ScalarProperty Name="OlcuBirimi" ColumnName="OlcuBirimi" />
+                <ScalarProperty Name="Kalori" ColumnName="Kalori" />
+                <ScalarProperty Name="Protein" ColumnName="Protein" />
+                <ScalarProperty Name="Karbonhidrat" ColumnName="Karbonhidrat" />
+                <ScalarProperty Name="Yağ" ColumnName="Yağ" />
+                <ScalarProperty Name="CategoriesID" ColumnName="CategoriesID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="DiyetisyenDBModel.Categories">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="CategoriesID" ColumnName="CategoriesID" />
+                <ScalarProperty Name="CategoriesName" ColumnName="CategoriesName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Danisans">
+            <EntityTypeMapping TypeName="DiyetisyenDBModel.Danisans">
+              <MappingFragment StoreEntitySet="Danisans">
+                <ScalarProperty Name="DanisanID" ColumnName="DanisanID" />
+                <ScalarProperty Name="AdiSoyadi" ColumnName="AdiSoyadi" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TlfNo" ColumnName="TlfNo" />
+                <ScalarProperty Name="Cinsiyet" ColumnName="Cinsiyet" />
+                <ScalarProperty Name="DogumTarihi" ColumnName="DogumTarihi" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="DiyetBaslamatarihi" ColumnName="DiyetBaslamatarihi" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EgitimDurumu" ColumnName="EgitimDurumu" />
+                <ScalarProperty Name="Boy" ColumnName="Boy" />
+                <ScalarProperty Name="Kilo" ColumnName="Kilo" />
+                <ScalarProperty Name="Yas" ColumnName="Yas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="danisanTahlilDosyas">
+            <EntityTypeMapping TypeName="DiyetisyenDBModel.danisanTahlilDosyas">
+              <MappingFragment StoreEntitySet="danisanTahlilDosyas">
+                <ScalarProperty Name="DanisanTahlilDosyaID" ColumnName="DanisanTahlilDosyaID" />
+                <ScalarProperty Name="DanisanDosyaTuru" ColumnName="DanisanDosyaTuru" />
+                <ScalarProperty Name="YuklenmeTarihi" ColumnName="YuklenmeTarihi" />
+                <ScalarProperty Name="DosyaAdi" ColumnName="DosyaAdi" />
+                <ScalarProperty Name="DanisanID" ColumnName="DanisanID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Denemes">
+            <EntityTypeMapping TypeName="DiyetisyenDBModel.Denemes">
+              <MappingFragment StoreEntitySet="Denemes">
+                <ScalarProperty Name="DenemeID" ColumnName="DenemeID" />
+                <ScalarProperty Name="DenemeAdi" ColumnName="DenemeAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DiyetSablons">
+            <EntityTypeMapping TypeName="DiyetisyenDBModel.DiyetSablons">
+              <MappingFragment StoreEntitySet="DiyetSablons">
+                <ScalarProperty Name="DiyetSablonID" ColumnName="DiyetSablonID" />
+                <ScalarProperty Name="Baslik" ColumnName="Baslik" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="OlusturmaTarihi" ColumnName="OlusturmaTarihi" />
+                <ScalarProperty Name="ToplamKalori" ColumnName="ToplamKalori" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gorusmelers">
+            <EntityTypeMapping TypeName="DiyetisyenDBModel.Gorusmelers">
+              <MappingFragment StoreEntitySet="Gorusmelers">
+                <ScalarProperty Name="GorusmeID" ColumnName="GorusmeID" />
+                <ScalarProperty Name="Alerji" ColumnName="Alerji" />
+                <ScalarProperty Name="GenetikHastalik" ColumnName="GenetikHastalik" />
+                <ScalarProperty Name="AiledeHastalik" ColumnName="AiledeHastalik" />
+                <ScalarProperty Name="Aktivite" ColumnName="Aktivite" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Kullanilanilac" ColumnName="Kullanilanilac" />
+                <ScalarProperty Name="GorusmeTarihi" ColumnName="GorusmeTarihi" />
+                <ScalarProperty Name="DanisanID" ColumnName="DanisanID" />
+                <ScalarProperty Name="GuncelKilo" ColumnName="GuncelKilo" />
+                <ScalarProperty Name="BacakCM" ColumnName="BacakCM" />
+                <ScalarProperty Name="BasenCM" ColumnName="BasenCM" />
+                <ScalarProperty Name="BelCM" ColumnName="BelCM" />
+                <ScalarProperty Name="GogusCM" ColumnName="GogusCM" />
+                <ScalarProperty Name="KalcaCM" ColumnName="KalcaCM" />
+                <ScalarProperty Name="KolCM" ColumnName="KolCM" />
+                <ScalarProperty Name="YagOranı" ColumnName="YagOranı" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OgunIcerikleris">
+            <EntityTypeMapping TypeName="DiyetisyenDBModel.OgunIcerikleris">
+              <MappingFragment StoreEntitySet="OgunIcerikleris">
+                <ScalarProperty Name="OgunIcerikID" ColumnName="OgunIcerikID" />
+                <ScalarProperty Name="Miktar" ColumnName="Miktar" />
+                <ScalarProperty Name="Olcubirimi" ColumnName="Olcubirimi" />
+                <ScalarProperty Name="Kalori" ColumnName="Kalori" />
+                <ScalarProperty Name="Protein" ColumnName="Protein" />
+                <ScalarProperty Name="Karbonhidrat" ColumnName="Karbonhidrat" />
+                <ScalarProperty Name="Yağ" ColumnName="Yağ" />
+                <ScalarProperty Name="OgunID" ColumnName="OgunID" />
+                <ScalarProperty Name="DiyetSablonID" ColumnName="DiyetSablonID" />
+                <ScalarProperty Name="BesinID" ColumnName="BesinID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ogunlers">
+            <EntityTypeMapping TypeName="DiyetisyenDBModel.Ogunlers">
+              <MappingFragment StoreEntitySet="Ogunlers">
+                <ScalarProperty Name="OgunID" ColumnName="OgunID" />
+                <ScalarProperty Name="OgunAdi" ColumnName="OgunAdi" />
+                <ScalarProperty Name="DiyetSablonID" ColumnName="DiyetSablonID" />
+                <ScalarProperty Name="BesinlerBesinID" ColumnName="BesinlerBesinID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

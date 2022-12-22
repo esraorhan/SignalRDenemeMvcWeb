@@ -1,0 +1,37 @@
+﻿@model IEnumerable<SignalRDenemeMvc.Models.BesinList>
+@{
+    ViewBag.Title = "PersonelleriGetir";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>PersonelleriGetir</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            yemek
+        </th>
+        <th>
+            Kalori
+        </th>
+        <th>
+            Miktar
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Yemek
+            </td>
+
+            <td>
+                @item.Kalori
+            </td>
+            <td>
+                @item.Miktar
+            </td>
+        </tr>
+    }
+</table>
